@@ -41,6 +41,10 @@ def play(digits=3):
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
 
             print(f"正解！ {tries} 回で当たり（答え {secret}）")
+            from .score import save_score, show_scores
+            save_score(tries)
+            print("\n更新後のスコア")
+            show_scores()
             break
         if tries >= max_tries:
           print("ゲームオーバー！")
