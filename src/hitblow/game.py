@@ -14,8 +14,14 @@ def play(digits=3):
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
-
+    from .greeting import show_greeting
+    show_greeting(digits)
     tries = 0
+
+    from .limit import get_max_tries
+    max_tries = get_max_tries()
+    print(f"最大{max_tries}回まで挑戦できます！")
+
     while True:
         guess = input("予想 > ").strip()
 
@@ -40,3 +46,9 @@ def play(digits=3):
             print("\n更新後のスコア")
             show_scores()
             break
+        if tries >= max_tries:
+          print("ゲームオーバー！")
+          print(f"答えは {secret} でした。")
+          break
+
+          print(f"残り {max_tries - tries} 回です。")
