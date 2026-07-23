@@ -9,8 +9,34 @@
 from .core import judge, make_secret
 
 
-def play(digits=3):
+def play():
+    print("難易度を選んでください")
+    print("1：Easy（3桁）")
+    print("2：Normal（4桁）")
+    print("3：Hard（5桁）")
+
+    while True:
+        level = input("選択 > ").strip()
+
+        if level == "1":
+            digits = 3
+            difficulty = "Easy"
+            break
+        elif level == "2":
+            digits = 4
+            difficulty = "Normal"
+            break
+        elif level == "3":
+            digits = 5
+            difficulty = "Hard"
+            break
+        else:
+            print("1、2、3のどれかを入力してください。")
+
+    print(f"{difficulty}モード（{digits}桁）で開始します！")
+
     secret = make_secret(digits)
+
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
     # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
